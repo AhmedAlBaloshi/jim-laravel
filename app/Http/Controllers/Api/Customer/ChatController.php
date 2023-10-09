@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Api\Customer;
 use App\Http\Controllers\Controller;
 use App\Models\ChatMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ChatController extends Controller
 {
     public function index(Request $request)
     {
-        $chats = ChatMessage::with('sender', 'user')->where('uid', $request->user_id)->orderBy('created_at', 'asc')->get();
+        $user= Auth::user();
+        $chats = ChatMessage::with('sender', 'user')->where('uid', $user->id)->orderBy('created_at', 'asc')->get();
         return response()->json(['success' => 1, 'chats' => $chats]);
     }
 

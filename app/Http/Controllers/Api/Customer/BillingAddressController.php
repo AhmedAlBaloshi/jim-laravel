@@ -5,14 +5,19 @@ namespace App\Http\Controllers\Api\Customer;
 use App\Http\Controllers\Controller;
 use App\Models\BillingAddress;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class BillingAddressController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
 
     public function index(Request $request)
     {
-        $address = BillingAddress::where('customer_id', $request->customer_id)->get();
+        $address = BillingAddress::where('customer_id', Auth::user()->id)->get();
         return response()->json(['success' => 1, 'address' => $address]);
     }
 

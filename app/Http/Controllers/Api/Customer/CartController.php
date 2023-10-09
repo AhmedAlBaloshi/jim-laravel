@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Api\Customer;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
     public function index(Request $request)
     {
-        $cartItems = Cart::with('products', 'products.category')->where('customer_id', $request->user_id)->get();
+        $user = Auth::user();
+        $cartItems = Cart::with('products', 'products.category')->where('customer_id', $user->id)->get();
         return response()->json(['success' => 1, 'cartItems' => $cartItems]);
     }
 

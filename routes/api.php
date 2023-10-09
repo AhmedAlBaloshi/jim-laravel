@@ -25,7 +25,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout']);
 Route::post('register', [AuthController::class, 'register']);
+Route::get('profile', [AuthController::class, 'profile']);
+Route::post('update-profile', [AuthController::class, 'updateProfile']);
 
 // Route::middleware('auth')->group(function () {
 Route::get('categories', [CategoryController::class, 'index']);
