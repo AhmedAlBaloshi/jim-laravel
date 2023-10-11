@@ -13,4 +13,8 @@ class Store extends Model
     public function products(){
         return $this->hasMany(Product::class, 'storeId', 'id');
     }
+
+    public function orderItems(){
+        return $this->hasMany(OrderItem::class, 'prdct_storeId', 'id');
+    }
 }

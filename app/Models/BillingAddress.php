@@ -11,9 +11,9 @@ class BillingAddress extends Model
     protected $table = 'billing_address';
     protected $fillable = [
         'customer_id',
-        'first_name',
-        'last_name',
+        'full_name',
         'company_name',
+        'address_type',
         'address',
         'town_city',
         'state_country',

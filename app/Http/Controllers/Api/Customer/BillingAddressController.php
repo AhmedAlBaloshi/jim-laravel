@@ -25,9 +25,9 @@ class BillingAddressController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'customer_id' => 'required|integer',
-            'first_name' => 'required|string|min:3|max:255',
-            'last_name' => 'required|string|min:3|max:255',
+            'full_name' => 'required|string|min:3|max:255',
             // 'company_name' => 'nullable|string|max:255',
+            'address_type' => 'required|string|min:3|max:255',
             'address' => 'required|string|min:3|max:255',
             'town_city' => 'required|string|min:3|max:255',
             'state_country' => 'required|string|min:3|max:255',
@@ -48,8 +48,8 @@ class BillingAddressController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'customer_id' => 'required|integer',
-            'first_name' => 'required|string|min:3|max:255',
-            'last_name' => 'required|string|min:3|max:255',
+            'full_name' => 'required|string|min:3|max:255',
+            'address_type' => 'required|string|min:3|max:255',
             'address' => 'required|string|min:3|max:255',
             'town_city' => 'required|string|min:3|max:255',
             'state_country' => 'required|string|min:3|max:255',
